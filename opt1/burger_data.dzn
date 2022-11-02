@@ -1,0 +1,16 @@
+% These constants represent the index in the arrays for each ingredient.
+% example sodium[beef] is the amount of sodium in one unit of beef.
+
+beef = 1;
+buns = 2;
+cheese = 3;
+onions = 4;
+pickles = 5;
+lettuce = 6;
+ketchup = 7;
+tomatoes = 8;
+
+sodium = [50, 330, 310, 1, 260, 3, 160, 3];
+fat = [17, 9, 6, 2, 0, 0, 0, 0];
+calories = [220, 260, 70, 10, 5, 4, 20, 9];
+cost = [25, 15, 10, 9, 3, 4, 2, 4]; % cost in cents per one pice
