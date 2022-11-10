@@ -30,9 +30,7 @@ solve minimize path_cost;
 
 var set of int: path_edges = {edge | edge in 1..n_edges where flows[edge] != 0};
 var set of int: path_nodes = { from[edge] | edge in path_edges} union { to[edge] | edge in path_edges};
-array[int] of var opt set of int: paths = [ {from[edge], to[edge]} | edge in path_edges ];
 
 output["Path cost: \(path_cost)\n",
-       "\(flows)\n",
-       "\(path_edges)\n",
-       "\(paths)"];
+       "Edge flows: \(flows)\n",
+       "Nodes on path: \(path_nodes)"];
