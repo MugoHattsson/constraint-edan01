@@ -46,6 +46,7 @@ import org.jacop.search.InputOrderSelect;
 import org.jacop.search.PrintOutListener;
 import org.jacop.search.Search;
 import org.jacop.search.SelectChoicePoint;
+import org.jacop.search.*;
 
 /**
  * 
@@ -99,8 +100,7 @@ public class Golomb {
 
     public void model() {
 
-	    System.out.println("Program to solve Golomb mark problem - length "
-			       + noMarks);
+	    System.out.println("Program to solve Golomb mark problem - length " + noMarks);
 
 	    store = new Store();
 	    ArrayList<IntVar> vars = new ArrayList<IntVar>();
@@ -169,12 +169,23 @@ public class Golomb {
 
 	    IntVar cost = numbers[numbers.length - 1];
 
-	    SplitSearch search = new SplitSearch(store);
-	    //SimpleDFS search = new SimpleDFS(store);
+     //    System.out.println("Simple DFS");
+	    // SimpleDFS search = new SimpleDFS(store);
+
+        System.out.println("Split Search:");
+	    SplitDFS search = new SplitDFS(store);
+	    // Search<IntVar> search = new DepthFirstSearch<IntVar>();
+	    // SelectChoicePoint<IntVar> select = new SimpleSelect<IntVar>(numbers, null, new IndomainMin<IntVar>());
+	    // SelectChoicePoint<IntVar> select = new SimpleSelect<IntVar>(numbers, new SmallestDomain<IntVar>(), new IndomainMin<IntVar>());
+	    // SelectChoicePoint<IntVar> select = new SimpleSelect<IntVar>(numbers, new MaxRegret<IntVar>(), new IndomainMin<IntVar>());
+	    // SelectChoicePoint<IntVar> select = new SimpleSelect<IntVar>(numbers, new LargestDomain<IntVar>(), new IndomainMin<IntVar>());
+	    // SelectChoicePoint<IntVar> select = new SimpleSelect<IntVar>(numbers, new MostConstrainedDynamic<IntVar>(), new IndomainMin<IntVar>());
+
 	    search.setVariablesToReport(numbers);
 	    search.setCostVariable(cost);
 
 	    boolean result = search.label(numbers);
+	    // boolean result = search.labeling(store, select);
 
 	    System.out.println("Total number of visited nodes = " + search.N);
 	    System.out.println("Total number of failed nodes = " + search.failedNodes);
